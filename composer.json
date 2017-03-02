@@ -3,7 +3,8 @@
     "description": "This package will help to create code coverage and process it in the backgroud",
     "type": "library",
     "require": {
-        "phpunit/php-code-coverage": "^2.2"
+        "phpunit/php-code-coverage": "^2.2",
+	"php-amqplib/php-amqplib": "2.6.*"
     },
     "license": "MIT",
     "authors": [

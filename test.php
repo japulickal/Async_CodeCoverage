@@ -14,7 +14,7 @@ require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer 
 $test = new \Async_CodeCoverage;
 
 
-$newCoverage = unserialize(file_get_contents("/tmp/coverageDataSerialized.bin"));
+$newCoverage = unserialize(file_get_contents("/tmp/coverageDataSerialized_new.bin"));
 $newCoverage->reProcessData();
 
 
