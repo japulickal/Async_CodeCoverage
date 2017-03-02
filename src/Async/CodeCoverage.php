@@ -5,11 +5,6 @@ class Async_CodeCoverage extends \PHP_CodeCoverage
 {
     protected $coverageData;
 
-
-    public function start($string) {
-    	echo "jose anotny";die();
-    }
-
 	/**
      * Stop collection of code coverage information.
      *
