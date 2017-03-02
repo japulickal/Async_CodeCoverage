@@ -1,0 +1,17 @@
+<?php 
+
+require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload
+
+
+
+$newCoverage = unserialize(file_get_contents("/tmp/coverageDataSerialized.bin"));
+$newCoverage->reProcessData();
+
+
+$randValue = uniqid('report', true);
+
+// $writer = new \PHP_CodeCoverage_Report_Clover;
+// $writer->process($newCoverage, __DIR__.'/Report/coverage_'.$randValue.'.xml');
+
+$writer = new \PHP_CodeCoverage_Report_HTML;
+$writer->process($newCoverage,  __DIR__.'/Report/coverage_html_'.$randValue);

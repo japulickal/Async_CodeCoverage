@@ -1,0 +1,21 @@
+{
+    "name": "jose/async_code-coverage",
+    "description": "This package will help to create code coverage and process it in the backgroud",
+    "type": "library",
+    "require": {
+        "phpunit/php-code-coverage": "^2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Antony",
+            "email": "jose@joseantony.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "Async": "src/"
+        }
+    }
+}
