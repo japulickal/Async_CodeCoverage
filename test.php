@@ -3,7 +3,7 @@
 
 
 
-
+date_default_timezone_set('UTC');
 
 
 
@@ -14,14 +14,14 @@ require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer 
 $test = new \Async_CodeCoverage;
 
 
-// $newCoverage = unserialize(file_get_contents("/tmp/coverageDataSerialized.bin"));
-// $newCoverage->reProcessData();
+$newCoverage = unserialize(file_get_contents("/tmp/coverageDataSerialized.bin"));
+$newCoverage->reProcessData();
 
 
-// $randValue = uniqid('report', true);
+$randValue = uniqid('report', true);
 
 // // $writer = new \PHP_CodeCoverage_Report_Clover;
 // // $writer->process($newCoverage, __DIR__.'/Report/coverage_'.$randValue.'.xml');
 
-// $writer = new \PHP_CodeCoverage_Report_HTML;
-// $writer->process($newCoverage,  __DIR__.'/Report/coverage_html_'.$randValue);
+$writer = new \PHP_CodeCoverage_Report_HTML;
+$writer->process($newCoverage,  __DIR__.'/Report/coverage_html_'.$randValue);

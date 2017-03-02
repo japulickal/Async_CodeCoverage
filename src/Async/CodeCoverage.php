@@ -14,7 +14,7 @@ class Async_CodeCoverage extends \PHP_CodeCoverage
      * @return array
      * @throws PHP_CodeCoverage_Exception
      */
-    public function stop($coverageDriver, $append = true, $linesToBeCovered = array(), array $linesToBeUsed = array())
+    public function asyncStop($coverageDriver, $append = true, $linesToBeCovered = array(), array $linesToBeUsed = array())
     {
         if (!is_bool($append)) {
             throw PHP_CodeCoverage_Util_InvalidArgumentHelper::factory(
