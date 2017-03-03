@@ -7,7 +7,7 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 
 class Async_SendReport {
-	public static function send(Async_CodeCoverage $codeCoverage, String $url) {
+	public static function send(Async_CodeCoverage $codeCoverage, string $url) {
 		$fields = array('data' => base64_encode(serialize($codeCoverage)));
 		$postvars = http_build_query($fields);
 		$ch = curl_init();
