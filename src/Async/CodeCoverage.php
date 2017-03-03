@@ -1,6 +1,8 @@
 <?php 
 
-
+/**
+ * 
+ */
 class Async_CodeCoverage extends \PHP_CodeCoverage
 {
     protected $coverageData;
@@ -31,7 +33,7 @@ class Async_CodeCoverage extends \PHP_CodeCoverage
         }
 
         $this->coverageData = $coverageDriver->stop();
-        // $this->append($this->coverageData, null, $append, $linesToBeCovered, $linesToBeUsed);
+
 
         $this->currentId = null;
 
@@ -39,7 +41,7 @@ class Async_CodeCoverage extends \PHP_CodeCoverage
     }
 
 
-    public function reProcessData() {
-    	$this->append($this->coverageData, null, true, array(), array());
+    public function reProcessData($append = true, $linesToBeCovered = array(), array $linesToBeUsed = array()) {
+    	$this->append($this->coverageData, null, $append, $linesToBeCovered, $linesToBeUsed);
     }
 }
