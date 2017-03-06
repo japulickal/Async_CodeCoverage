@@ -12,7 +12,7 @@ class Async_SendReport {
 		$zipData = file_get_contents($zipFilePath);
 
 
-		$fields = array('data' =>  base64_encode(serialize($codeCoverage)), 'application_base_dir' => __DIR__ . "/../../../../../.", 'code_zip' => base64_encode($zipData));
+		$fields = array('data' =>  base64_encode(serialize($codeCoverage)), 'application_base_dir' => __DIR__, 'code_zip' => base64_encode($zipData));
 		$postvars = http_build_query($fields);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
